@@ -1,9 +1,14 @@
+var taskIdCounter = 0;
+
 var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.getElementById("task-to-do");
-var taskIdCounter = 0;
-var pageContentEl = document.querySelector("#page-content");
 var tasksInProgressEl = document.querySelector("#tasks-in-progress");
 var tasksCompletedEl = document.querySelector("#tasks-completed");
+var pageContentEl = document.querySelector("#page-content");
+
+// create array to hold tasks for saving
+var tasks = [];
+
 
 var taskFormHandler = function (event) {
     event.preventDefault();
@@ -38,9 +43,6 @@ var taskFormHandler = function (event) {
 };
 
 var createTaskEl = function (taskDataObj) {
-    // console.log(taskDataObj);
-    // console.log(taskDataObj.status);
-    // create list item
     var listItemEl = document.createElement("li");
     listItemEl.className = "task-item"; // assign class name
 
@@ -227,9 +229,6 @@ var deleteTask = function (taskId) {
     saveTasks();
 };
 
-var tasks = [];
-var emptyArr = [];
-
 var saveTasks = function () {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 };
@@ -272,6 +271,8 @@ loadTasks();
 
 
 /* FROM loadTasks() */
+
+// var emptyArr = [];
 
 
 // for (var i = 0; i < tasks.length; i++) {
